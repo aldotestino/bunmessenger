@@ -1,6 +1,6 @@
-# TRYBUN
+# Bun Messenger
 
-Bun project [here](https://bun.sh)
+A simple messaging app made with [Bun](https://bun.sh)
 
 ### How to run locally
 
@@ -10,7 +10,7 @@ bun run server.ts
 
 ### Demo
 
-The demo is available [here](https://trybun.vcetmang.online/). Deployed on Railway.
+The demo is available [here](https://bm.vcetmang.online/). Deployed on Railway.
 
 
 

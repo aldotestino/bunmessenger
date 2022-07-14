@@ -1,6 +1,8 @@
 {
-  "dependencies": {},
   "devDependencies": {
     "bun-types": "^0.1.3"
+  },
+  "dependencies": {
+    "nanoid": "^4.0.0"
   }
 }
