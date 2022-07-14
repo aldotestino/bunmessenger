@@ -5,8 +5,13 @@ import * as qs from 'node:querystring';
 
 const messageElement = (message: Message) => `
   <div class="p-4 rounded-lg bg-gray-800 space-y-1">
-    <h3 class="text-xl text-indigo-400 font-bold">${message.author}</h3>
-    <p>${message.body}</p>
+    <div class="flex space-x-2">
+      <img class="w-12 h-12" src="https://avatars.dicebear.com/api/personas/${message.author}.svg" alt="profile-pic">
+      <div class="w-full space-y-1">
+        <h3 class="text-xl text-indigo-400 font-bold">${message.author}</h3>
+        <p>${message.body}</p>
+      </div>
+    </div>
     <div class="flex justify-end">
       <small class="text-gray-400">${message.createdAt}</small>
     </div>
