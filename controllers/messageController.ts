@@ -17,8 +17,7 @@ export default () => {
 
   router.post("/message", async (req) => {
     const newMessage = qs.parse(await req.text());
-    console.log(newMessage);
-    //messageDB.create(newMessage);
+    messageDB.create(newMessage);
 
     return Response.redirect("/");
   })
