@@ -3,7 +3,7 @@ const routes = {
   'POST': {}
 };
 
-function handle(req: Request): Response | Promise<Response> {
+export function handle(req: Request): Response | Promise<Response> {
   const endpoint = req.url.substring(21);
   try {
     if(routes[req.method][endpoint]) {
@@ -16,13 +16,10 @@ function handle(req: Request): Response | Promise<Response> {
   }
 }
 
-export default {
-  handle,
-  get: (url: string, action: (Request) => Response | Promise<Response>) => {
-    routes['GET'][url] = action
-  },
-  post: (url: string, action: (Request) => Response | Promise<Response>) => {
-    routes['POST'][url] = action
-  }
+export function get(url: string, action: (Request) => Response | Promise<Response>) {
+  routes['GET'][url] = action
 }
 
+export function post(url: string, action: (Request) => Response | Promise<Response>) {
+  routes['POST'][url] = action
+}

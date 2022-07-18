@@ -1,5 +1,5 @@
 import { Message } from "../models/message";
-import router from "../router";
+import * as router from "../router";
 import { messageDB } from "../lib/db";
 import * as qs from 'node:querystring';
 
@@ -18,7 +18,7 @@ const messageElement = (message: Message) => `
   </div>
 `
 
-export default () => {
+export function messageController() {
 
   router.post("/message", async (req) => {
     const newMessage = qs.parse(await req.text());
@@ -41,13 +41,14 @@ export default () => {
           <script src="https://cdn.tailwindcss.com"></script>
         </head>
         <body class="bg-gray-900 text-white min-h-screen overflow-hidden">
-          <header class="flex sticky top-0 w-full bg-gray-900 justify-center p-2 shadow-md">
-            <h1 class="text-2xl">Bun Messenger</h1>
-          </header>
-          <main style="height: calc(100vh - 112px)" class="space-y-2 px-2 overflow-auto">
-            ${messages.map(m => messageElement(m)).join().replaceAll(",", "")}
-          </main>
-            <footer class="fixed bottom-0 w-full">
+          <div class="w-full max-w-2xl mx-auto">
+            <header class="sticky top-0 w-full bg-gray-900 p-2 shadow-md">
+              <h1 class="text-2xl text-center">Bun Messenger</h1>
+            </header>
+            <main style="height: calc(100vh - 112px)" class="space-y-2 px-2 overflow-auto">
+              ${messages.map(m => messageElement(m)).join().replaceAll(",", "")}
+            </main>
+            <footer class="sticky bottom-0 w-full">
               <form accept-charset="utf-8" class="p-2 bg-gray-900 flex space-x-2 mb-0" action="/message" method="post">
                <input required type="text" name="author" placeholder="Author" class="w-2/5 transition focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none bg-transparent py-2 px-4 text-lg placeholder-gray-500 shadow-md border-2 border-gray-500 rounded-lg"">
                <input required type="text" name="body" placeholder="Message" class="w-3/5 transition focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none bg-transparent py-2 px-4 text-lg placeholder-gray-500 shadow-md border-2 border-gray-500 rounded-lg">
@@ -59,6 +60,7 @@ export default () => {
                </button>
              </form>
            </footer>
+          </div>
         </body>
       </html>
       `,
