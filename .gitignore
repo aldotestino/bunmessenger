@@ -2,3 +2,4 @@ node_modules
 .idea
 messages.sqlite
 .DS_STORE
+aws.sh
